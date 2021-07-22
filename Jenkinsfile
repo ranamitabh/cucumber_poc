@@ -1,9 +1,17 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'Maven 3.8.1'
-    }
+   tools {
+           maven 'Maven 3.8.1'
+       }
+       stages {
+           stage ('Initialize') {
+               steps {
+                   sh '''
+                       echo "M2_HOME = ${M2_HOME}"
+                   '''
+               }
+           }
     stages {
         stage('Build') {
             steps {
