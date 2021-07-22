@@ -13,10 +13,16 @@ pipeline {
                        '''
                    }
                }
-        stage('Build') {
-            steps {
-                sh 'mvn -B clean test package'
-            }
-        }
+
+        stage('Test') {
+                    steps {
+                        sh 'mvn -B clean test'
+                    }
+                }
+         stage('Build') {
+                    steps {
+                        sh 'mvn -B -DskipTests package'
+                    }
+                }
     }
 }
